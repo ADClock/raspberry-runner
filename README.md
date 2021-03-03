@@ -25,7 +25,7 @@ sh run.sh
 
 
 ## FAQ
-#### What if I want to upgrade raspberry-runner? (should never be needed)
+### What if I want to upgrade raspberry-runner? (should never be needed)
 Run following commands:
 ```shell
 cd /home/pi/adclock/raspberry-runner
@@ -33,3 +33,16 @@ git reset --hard HEAD
 git pull
 sudo chmod +x run.sh
 ```
+
+### I see a new version of [ADClock Server](https://github.com/ADClock/server) on GitHub, but it doesn't download it.
+Maybe your GitHub API rate limit exceeded. You can pass a specific version. See below.
+
+### How do I run a specific version?
+Run the following commands:
+```shell
+cd /home/pi/adclock/raspberry-runner
+sh run.sh <release-tag>
+```
+If the given version is not downloaded yet it will download it from GitHub.
+
+### It seems like raspberry is frozen.
