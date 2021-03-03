@@ -14,9 +14,15 @@ Guide and Scripts for running ADClock on a Raspberry PI. The following guide wil
     - Add following line before exit: `(cd /home/pi/adclock/raspberry-runner/ && sh run.sh)`
     - Save and exit by pressing `^X` followed by `Y` and `Enter`
 8. Reboot the raspberry pi. `sudo reboot`
+9. The ADClock Server should be online under `<raspberry-ip-adress>:80` 
 
 ## Debugging
-TODO
+If the server is not reachable you can try executing the script by yourself and view the console output:
+```shell
+cd /home/pi/adclock/raspberry-runner/
+sh run.sh
+```
+
 
 ## FAQ
 #### What if I want to upgrade raspberry-runner? (should never be needed)
