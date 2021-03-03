@@ -6,15 +6,16 @@ Guide and Scripts for running ADClock on a Raspberry PI. The following guide wil
 1. Download the latest [Raspberry PI OS](https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit). 
 2. Flash the image to the SD-Card. [Win32DiskImager](https://www.heise.de/download/product/win32-disk-imager-92033) will help you.
 3. Startup the pi and finish os installation. This might take up an hour.
-4. Create new folder in pi home. `mkdir /home/pi/adclock && cd /home/pi/adclock`
-5. Download the scripts from this repository. `git clone https://github.com/ADClock/raspberry-runner.git && cd raspberry-runner`
-6. Make `run.sh` executable. `sudo chmod +x run.sh`
-7. Register `run.sh` in startup.
+    - Don't forget to setup wlan or lan connection! 
+5. Create new folder in pi home. `mkdir /home/pi/adclock && cd /home/pi/adclock`
+6. Download the scripts from this repository. `git clone https://github.com/ADClock/raspberry-runner.git && cd raspberry-runner`
+7. Make `run.sh` executable. `sudo chmod +x run.sh`
+8. Register `run.sh` in startup.
     - Edit rc.local: `sudo nano /etc/rc.local` 
     - Add following line before exit: `(cd /home/pi/adclock/raspberry-runner/ && sh run.sh)`
     - Save and exit by pressing `^X` followed by `Y` and `Enter`
-8. Reboot the raspberry pi. `sudo reboot`
-9. The ADClock Server should be online under `<raspberry-ip-adress>:80` 
+9. Reboot the raspberry pi. `sudo reboot`
+10. The ADClock Server should be online under `<raspberry-ip-adress>:80` 
 
 ## Debugging
 If the server is not reachable you can try executing the script by yourself and view the console output:
