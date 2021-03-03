@@ -45,4 +45,7 @@ sh run.sh <release-tag>
 ```
 If the given version is not downloaded yet it will download it from GitHub.
 
+If you want to use a custom version simply create a subfolder and insert a `server.jar`. Run the script as mentioned above.
+
 ### It seems like raspberry is frozen.
+Well. Maybe a `sudo reboot` helps?
