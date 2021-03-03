@@ -15,21 +15,55 @@ get_latest_release() {
 
 # Main
 while :
-do
-    # Checkout latest release
-    LATEST_RELEASE=$(get_latest_release $GITHUB_REPO)
-    echo "Latest release of $GITHUB_REPO is $LATEST_RELEASE" 
+do  
+    # (1) Check if release version was passed as parameter
+    if [ -z $1 ]; then
+        RELEASE=""
+    else 
+        RELEASE="$1"
+        echo "Using first parameter '$1' as release."
+    fi
+    
+    # (2) if not, check against github
+    if [ -z $RELEASE ]; then
+        # Checkout latest release
+        LATEST_RELEASE=$(get_latest_release $GITHUB_REPO)
+        if [ -z $LATEST_RELEASE ]; then
+            echo "Release check against github api failed. (Maybe API rate limit exceeded?)"
+        else
+            RELEASE=$LATEST_RELEASE
+            echo "Latest release of $GITHUB_REPO is $RELEASE."
+        fi
+    fi
+    
+    # (3) if github check fails, take latest local version
+    if [ -z $RELEASE ]; then
+        LOCAL_RELEASE=$(ls -td */$JAR_FILE | head -n 1 | cut -d'/' -f1)
+        
+        if [ -z $LOCAL_RELEASE ]; then
+            echo "No local release folder found. Can't retrive release version. Exiting ..."
+            exit 1
+        else
+            RELEASE=$LOCAL_RELEASE
+            echo "Using latest local release $RELEASE."
+        fi
+        
+    fi
+     
 
-    if [ ! -d "./$LATEST_RELEASE" ]; then
-      echo "New release $LATEST_RELEASE found. Creating subfolder ..."
-      mkdir "./$LATEST_RELEASE"
+    echo "Using release $RELEASE" 
+    if [ ! -d "./$RELEASE" ]; then
+      echo "No subfolder with name $RELEASE found. Creating new one ..."
+      mkdir "./$RELEASE"
     fi 
 
-    cd "./$LATEST_RELEASE" # enter release folder
+    cd "./$RELEASE" # enter release folder
 
     if [ ! -f "./$JAR_FILE" ]; then
-      echo "Jar not found. Download $JAR_FILE @ $LATEST_RELEASE from GitHub ..."
-      curl --silent -O -J -L "https://github.com/$GITHUB_REPO/releases/download/$LATEST_RELEASE/$JAR_FILE"
+      echo "$JAR_FILE not found. Downloading from GitHub $GITHUB_REPO @ $RELEASE ..."
+      curl --silent -O -J -L "https://github.com/$GITHUB_REPO/releases/download/$RELEASE/$JAR_FILE"
+      
+      # TODO remove release folder, if downloaded jar file was not found.
     fi 
 
     # Run JAR_FILE
