@@ -22,6 +22,7 @@ If the server is not reachable you can try executing the script by yourself and 
 cd /home/pi/adclock/raspberry-runner/
 sh run.sh
 ```
+You might want to add `sudo`, because only root users can bind port 80. (See [here](https://superuser.com/questions/710253/allow-non-root-process-to-bind-to-port-80-and-443)) However the run.sh instance called on startup runs under root user - no special `sudo` needed there.
 
 
 ## FAQ
