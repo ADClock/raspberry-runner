@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Config
 GITHUB_REPO="adclock/server"
@@ -37,7 +37,7 @@ do
     rc=$?
     echo "$JAR_FILE returned $rc."
 
-    if [ "$rc" == "1" ]; then
+    if [ "$rc" == 1 ]; then
         echo "An error occurred. Waiting $DELAY seconds ..."
         sleep $DELAY # seconds
     fi
