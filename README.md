@@ -58,3 +58,6 @@ apt list --installed *jre*
 sudo apt remove openjdk-11-jre-headless
 sudo apt get openjdk-8-jre
 ```
+
+### BindException: The adress is already used.
+Well. You should end the other process or change the port. Currently we do not provide an option for that. Sorry.
