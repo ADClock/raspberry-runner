@@ -19,4 +19,11 @@ Guide and Scripts for running ADClock on a Raspberry PI. The following guide wil
 TODO
 
 ## FAQ
-TODO
+#### What if I want to upgrade raspberry-runner? (should never be needed)
+Run following commands:
+```shell
+cd /home/pi/adclock/raspberry-runner
+git reset --hard HEAD
+git pull
+sudo chmod +x run.sh
+```
