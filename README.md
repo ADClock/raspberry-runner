@@ -10,9 +10,9 @@ Guide and Scripts for running ADClock on a Raspberry PI. The following guide wil
 5. Download the scripts from this repository. `git clone https://github.com/ADClock/raspberry-runner.git && cd raspberry-runner`
 6. Make `run.sh` executable. `sudo chmod +x run.sh`
 7. Register `run.sh` in startup.
-  - Edit rc.local: `sudo nano /etc/rc.local` 
-  - Add following line before exit: `sh /home/pi/adclock/raspberry-runner/run.sh &`
-  - Save and exit by pressing `^X` followed by `Y` and `Enter`
+    - Edit rc.local: `sudo nano /etc/rc.local` 
+    - Add following line before exit: `sh /home/pi/adclock/raspberry-runner/run.sh &`
+    - Save and exit by pressing `^X` followed by `Y` and `Enter`
 8. Reboot the raspberry pi. `sudo reboot`
 
 ## Debugging
