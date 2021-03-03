@@ -49,3 +49,11 @@ If you want to use a custom version simply create a subfolder and insert a `serv
 
 ### It seems like raspberry is frozen.
 Well. Maybe a `sudo reboot` helps?
+
+### I get the error "Server VM is only supported on ARMv7+ VFP"
+Well. Maybe you need to remove Java 11 and install Java 8 instead. See [this](https://mathematica.stackexchange.com/questions/218347/raspberry-pi-server-vm-is-only-supported-on-armv7-vfp-error).
+```shell
+apt list --installed *jre*
+sudo apt remove openjdk-11-jre-headless
+sudo apt get openjdk-8-jre
+```
