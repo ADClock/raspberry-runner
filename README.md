@@ -7,6 +7,7 @@ Guide and Scripts for running ADClock on a Raspberry PI. The following guide wil
 2. Flash the image to the SD-Card. [Win32DiskImager](https://www.heise.de/download/product/win32-disk-imager-92033) will help you.
 3. Startup the pi and finish os installation. This might take up an hour.
     - Don't forget to setup wlan or lan connection! 
+4. Install [pi4j](https://pi4j.com/1.4/install.html#). `curl -sSL https://pi4j.com/install | sudo bash`
 5. Create new folder in pi home. `mkdir /home/pi/adclock && cd /home/pi/adclock`
 6. Download the scripts from this repository. `git clone https://github.com/ADClock/raspberry-runner.git && cd raspberry-runner`
 7. Make `run.sh` executable. `sudo chmod +x run.sh`
